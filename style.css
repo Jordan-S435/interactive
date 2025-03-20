@@ -1,0 +1,93 @@
+:root {
+    --color-text: #000;
+    --color-bg: #fff;
+    --font-size: 24px;
+  }
+  
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: "JetBrains Mono", monospace;
+    font-weight: 300;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    overflow-x: hidden;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  .word-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2rem;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    aspect-ratio: 1 / 1;
+    max-height: 80vh;
+    overflow: auto;
+    margin: 0 auto;
+    border: 1px solid transparent; /* Invisible border to visualize the square */
+  }
+  
+  .word {
+    font-size: var(--font-size);
+    cursor: pointer;
+    padding: 0.5rem;
+    position: relative;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .word .char {
+    position: relative;
+    --opa: 0;
+  }
+  
+  .word .char::after {
+    content: '';
+    position: absolute;
+    width: 1ch;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: currentColor;
+    opacity: var(--opa);
+    transition: opacity 0.2s;
+  }
+  
+  /* Animation styles */
+  .hover-effect {
+    white-space: nowrap;
+    display: inline-block;
+  }
+  
+  .hover-effect .char {
+    display: inline-block;
+    position: relative;
+  }
+  
+  /* Add a subtle hover effect to each word */
+  .word:hover {
+    color: #333;
+  }
+  
+  /* Media query for smaller screens */
+  @media (max-width: 768px) {
+    .word-container {
+      width: 90%;
+      padding: 1rem;
+    }
+    
+    :root {
+      --font-size: 20px;
+    }
+  }
